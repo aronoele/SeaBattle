@@ -8,5 +8,4 @@ public:
 	HumanPlayer();
 	~HumanPlayer();
 	void fire() override;
-	void show() override;
 };

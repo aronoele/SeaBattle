@@ -21,8 +21,14 @@
   <ItemGroup>
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellState.h" />
+    <ClInclude Include="ConsoleView.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="HumanPlayer.h" />
+    <ClInclude Include="IController.h" />
+    <ClInclude Include="IModel.h" />
+    <ClInclude Include="IView.h" />
+    <ClInclude Include="Observable.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RobotPlayer.h" />
     <ClInclude Include="Ship.h" />
@@ -32,6 +38,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HumanPlayer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Observable.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RobotPlayer.cpp" />
     <ClCompile Include="Ship.cpp" />

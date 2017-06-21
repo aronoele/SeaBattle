@@ -20,7 +20,15 @@ Player::Player(const string& name)
 Player::~Player() {}
 
 string Player::getName() {
-return name_;
+	return name_;
+}
+
+int Player::getWidth() {
+	return width_;
+}
+
+int Player::getHeight() {
+	return height_;
 }
 
 void Player::setName(const string& name) {

@@ -13,13 +13,14 @@ public:
 	Player(const string& namee);
 	virtual ~Player();
 	string getName();
+	int getWidth();
+	int getHeight();
 	void setName(const string& name);
 	bool randomizeField();
 	bool isUnavailable(int xPosition, int yPosition, bool isHorizontal, int deckCount);	
 	virtual void fire() = 0;
 	int getAliveShipCount();
 	vector<Cell> getField();
-	virtual void show() = 0;
 protected:
 	string name_;
 	const int width_ = 10;

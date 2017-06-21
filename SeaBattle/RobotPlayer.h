@@ -8,5 +8,4 @@ public:
 	RobotPlayer();
 	~RobotPlayer();
 	void fire() override;
-	void show() override;
 };

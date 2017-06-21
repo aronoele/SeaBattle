@@ -8,6 +8,7 @@ public:
 	Game();
 	~Game();
 	bool isOver();
+	void show();
 	void play();
 private:
 	HumanPlayer humanPlayer;
