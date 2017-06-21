@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CELLSTATE_H
+#define CELLSTATE_H
 
 enum CellState {
 	EMPTY = -1,
@@ -6,3 +7,5 @@ enum CellState {
 	MISSED = 1,
 	SHOT = 2
 };
+
+#endif // CELLSTATE_H

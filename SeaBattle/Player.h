@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include <vector>
 
@@ -31,3 +32,5 @@ protected:
 	int aliveShipCount_;
 	bool shut(int x, int y);
 };
+
+#endif // PLAYER_H

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CELL_H
+#define CELL_H
 
 #include "CellState.h"
 
@@ -14,3 +15,5 @@ private:
 	int yPosition_;
 	CellState state_;
 };
+
+#endif // CELL_H

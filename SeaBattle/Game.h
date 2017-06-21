@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 
 #include "HumanPlayer.h"
 #include "RobotPlayer.h"
@@ -14,3 +15,5 @@ private:
 	HumanPlayer humanPlayer;
 	RobotPlayer robotPlayer;
 };
+
+#endif // GAME_H

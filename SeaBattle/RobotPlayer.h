@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ROBOTPLAYER_H
+#define ROBOTPLAYER_H
 
 #include "Player.h"
 
@@ -9,3 +10,5 @@ public:
 	~RobotPlayer();
 	void fire() override;
 };
+
+#endif // ROBOTPLAYER_H

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SHIP_H
+#define SHIP_H
 
 #include <vector>
 
@@ -15,3 +16,5 @@ private:
 	std::vector<Cell> decks_;
 	int health_;
 };
+
+#endif // SHIP_H

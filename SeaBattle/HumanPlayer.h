@@ -1,4 +1,5 @@
-#pragma once
+#ifndef HUMANPLAYER_H
+#define HUMANPLAYER_H
 
 #include "Player.h"
 
@@ -9,3 +10,5 @@ public:
 	~HumanPlayer();
 	void fire() override;
 };
+
+#endif // HUMANPLAYER_H
