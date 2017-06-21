@@ -13,20 +13,20 @@ class Player {
 public:
 	Player(const string& namee);
 	virtual ~Player();
-	string getName();
-	int getWidth();
-	int getHeight();
+	string getName() const;
+	int getWidth() const;
+	int getHeight() const;
 	void setName(const string& name);
 	bool randomizeField();
 	bool isUnavailable(int xPosition, int yPosition, bool isHorizontal, int deckCount);	
 	virtual void fire() = 0;
-	int getAliveShipCount();
-	vector<Cell> getField();
+	int getAliveShipCount() const;
+	const vector<Cell>& getField() const;
 protected:
 	string name_;
-	const int width_ = 10;
-	const int height_ = 10;
-	const int shipCount_ = 10;
+	int width_;
+	int height_;
+	int shipCount_;
 	vector<Cell> field_;
 	vector<Ship> ships_;
 	int aliveShipCount_;

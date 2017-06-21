@@ -16,8 +16,16 @@ void RobotPlayer::fire() {
 	int yPosition;
 	do {
 		cout << "Input x: ";
-		cin >> xPosition;
+		while (!(cin >> xPosition) || xPosition > 9) {
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+			cout << "Wrong input. Try again: ";
+		}
 		cout << "Input y: ";
-		cin >> yPosition;
+		while (!(cin >> yPosition) || xPosition > 9) {
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+			cout << "Wrong input. Try again: ";
+		}
 	} while (shut(xPosition, yPosition));
 }

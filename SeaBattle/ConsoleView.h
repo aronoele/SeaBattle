@@ -3,10 +3,17 @@
 
 #include "IView.h"
 #include "Observer.h"
+#include "Game.h"
 
 class ConsoleView : public IView, public Observer
 {
-
+public:
+	ConsoleView(Game* game);
+	~ConsoleView();
+	void show() override;
+	void update() override;
+private:
+	Game* game_;
 };
 
 #endif // CONSOLEVIEW_H

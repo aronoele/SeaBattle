@@ -21,8 +21,10 @@
   <ItemGroup>
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellState.h" />
+    <ClInclude Include="ConsoleController.h" />
     <ClInclude Include="ConsoleView.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Helper.h" />
     <ClInclude Include="HumanPlayer.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="IModel.h" />
@@ -35,7 +37,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="ConsoleController.cpp" />
+    <ClCompile Include="ConsoleView.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Helper.cpp" />
     <ClCompile Include="HumanPlayer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Observable.cpp" />

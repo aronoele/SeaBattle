@@ -3,6 +3,7 @@
 
 class IModel
 {
+public:
 	virtual ~IModel() {}
 	virtual void changeState() = 0;
 };

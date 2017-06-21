@@ -8,7 +8,7 @@ public:
 	Cell(int x, int y, CellState state);
 	Cell(int x, int y);
 	~Cell();
-	CellState getCellState();
+	CellState getCellState() const;
 	void setCellState(CellState state);
 private:
 	int xPosition_;

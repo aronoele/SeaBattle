@@ -1,13 +1,14 @@
-#include<iostream>
 #include <ctime>
 
+#include "Helper.h"
 #include "Player.h"
 
-using std::cout;
-
-Player::Player(const string& name)
+Player::Player(const string& name) : name_(name)
 {
-	name_ = name;
+	Helper helper;
+	width_ = helper.getFieldWidth();
+	height_ = helper.getFieldHeight();
+	shipCount_ = helper.getShipCount();
 	for (int y = 0; y < height_; y++) {
 		for (int x = 0; x < width_; x++) {
 			field_.push_back(Cell(x, y, CellState::EMPTY));
@@ -19,15 +20,15 @@ Player::Player(const string& name)
 
 Player::~Player() {}
 
-string Player::getName() {
+string Player::getName() const {
 	return name_;
 }
 
-int Player::getWidth() {
+int Player::getWidth() const {
 	return width_;
 }
 
-int Player::getHeight() {
+int Player::getHeight() const {
 	return height_;
 }
 
@@ -37,8 +38,9 @@ void Player::setName(const string& name) {
 
 bool Player::randomizeField() {
 	srand(time(0));
-	int deckCount = 4;
-	int shipCount = 1;
+	Helper helper;
+	int deckCount = helper.getInitDeckCount();
+	int shipCount = helper.getInitShipCount();
 	int xPosition;
 	int yPosition;
 	bool isHorizontal;
@@ -119,22 +121,27 @@ bool Player::isUnavailable(int xPosition, int yPosition, bool isHorizontal, int 
 }
 
 bool Player::shut(int x, int y) {
+	bool isShot = false;
 	switch (field_.at(x + height_ * y).getCellState()) {
 	case CLEAN:
 		field_.at(x + height_ * y).setCellState(CellState::SHOT);
-		return true;
+		isShot = true;
+		break;
 	case EMPTY:
 		field_.at(x + height_ * y).setCellState(CellState::MISSED);
-		return false;
+		isShot = false;
+		break;
 	default:
-		return false;
+		isShot = false;
+		break;
 	}
+	return isShot;
 }
 
-int Player::getAliveShipCount() {
+int Player::getAliveShipCount() const {
 	return aliveShipCount_;
 }
 
-vector<Cell> Player::getField() {
+const vector<Cell>& Player::getField() const {
 	return field_;
 }

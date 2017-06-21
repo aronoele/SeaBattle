@@ -3,8 +3,9 @@
 
 class IController
 {
+public:
 	virtual ~IController() {}
-	virtual void shut() = 0;
+	virtual void start() = 0;
 };
 
 #endif // ICONTROLLER_H

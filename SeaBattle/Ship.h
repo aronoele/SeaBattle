@@ -7,10 +7,10 @@
 
 class Ship {
 public:
-	Ship(int size, std::vector<Cell> deck);
+	Ship(int size, const std::vector<Cell>& decks);
 	~Ship();
 	void wound();
-	int getHealth();
+	int getHealth() const;
 private:
 	int size_;
 	std::vector<Cell> decks_;

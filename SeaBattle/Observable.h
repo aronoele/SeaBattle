@@ -7,10 +7,11 @@
 
 class Observable
 {
-	std::vector<Observer*> observers;
 public:
 	void addObserver(Observer* observer);	
 	void notifyUpdate();
+private:
+	std::vector<Observer*> observers_;
 };
 
 #endif // OBSERVABLE_H
