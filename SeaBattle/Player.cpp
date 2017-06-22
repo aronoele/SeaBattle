@@ -37,7 +37,7 @@ void Player::setName(const string& name) {
 }
 
 bool Player::randomizeField() {
-	//srand(time(0));
+	srand(time(0));
 	Helper helper;
 	int deckCount = helper.getInitDeckCount();
 	int shipCount = helper.getInitShipCount();
@@ -121,7 +121,8 @@ bool Player::isShot(int x, int y) {
 		if (ships_.at(i).isShot(x, y)) {
 			field_.at(x + height_ * y).setCellState(CellState::SHOT);/*?*/
 			if (ships_.at(i).getHealth() == 0) {//mark killed ship
-				/*auto decks = ships_.at(i).getDecks();
+				auto decks = ships_.at(i).getDecks();
+				bool isHorizontal = (decks.size() > 1) && (decks.at(1).getXPosition() == decks.at(0).getXPosition() + 1);
 				int topBorder = 0, leftBorder = 0, bottomBorder = height_ - 1, rightBorder = width_ - 1;
 				if (decks.at(0).getXPosition() != 0) {
 					leftBorder = decks.at(0).getXPosition() - 1;
@@ -129,29 +130,38 @@ bool Player::isShot(int x, int y) {
 				if (decks.at(0).getYPosition() != 0) {
 					topBorder = decks.at(0).getYPosition() - 1;
 				}
-				if (decks.at(1).getXPosition() == decks.at(0).getXPosition() + 1) {
+				if (isHorizontal) {
 					if (decks.at(decks.size() - 1).getXPosition() != width_ - 1) {
 						rightBorder = decks.at(decks.size() - 1).getXPosition() + 1;
 					}
 					if (decks.at(0).getYPosition() != height_ - 1) {
-						topBorder = decks.at(0).getYPosition() + 1;
+						bottomBorder = decks.at(0).getYPosition() + 1;
 					}
 				}
 				else {
 					if (decks.at(0).getXPosition() != width_ - 1) {
-						leftBorder = decks.at(0).getXPosition() + 1;
+						rightBorder = decks.at(0).getXPosition() + 1;
 					}
 					if (decks.at(decks.size() - 1).getYPosition() != height_ - 1) {
-						bottomBorder = decks.at(0).getYPosition() + 1;
+						bottomBorder = decks.at(decks.size() - 1).getYPosition() + 1;
 					}
 				}
-				for (int j = topBorder; j <= bottomBorder; j++) {
-					for (int i = leftBorder; i <= rightBorder; i++) {
-						if (i != 0 || i != width_ - 1 || j != 0 || j != height_ - 1) {
-							field_.at(i + height_ * j).setCellState(CellState::MISSED);
-						}
+				for (int i = leftBorder; i <= rightBorder; i++) {
+					if (topBorder != 0) {
+						field_.at(i + height_ * topBorder).setCellState(CellState::MISSED);
 					}
-				}*/
+					if (bottomBorder != height_ - 1) {
+						field_.at(i + height_ * bottomBorder).setCellState(CellState::MISSED);
+					}
+				}
+				for (int i = topBorder; i <= bottomBorder; i++) {
+					if (leftBorder != 0) {
+						field_.at(leftBorder + height_ * i).setCellState(CellState::MISSED);
+					}
+					if (rightBorder != 0) {
+						field_.at(rightBorder + height_ * i).setCellState(CellState::MISSED);
+					}
+				}
 				aliveShipCount_--;
 			}
 			return true;

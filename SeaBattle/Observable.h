@@ -8,6 +8,7 @@
 class Observable
 {
 public:
+	~Observable();
 	void addObserver(Observer* observer);	
 	void notifyUpdate();
 private:

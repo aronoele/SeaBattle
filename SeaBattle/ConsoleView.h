@@ -14,6 +14,7 @@ public:
 	void update() override;
 private:
 	Game* game_;
+	time_t start;
 };
 
 #endif // CONSOLEVIEW_H
