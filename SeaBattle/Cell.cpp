@@ -14,3 +14,29 @@ CellState Cell::getCellState() const {
 void Cell::setCellState(CellState state) {
 	state_ = state;
 }
+
+int Cell::getXPosition() const {
+	return xPosition_;
+}
+
+int Cell::getYPosition() const {
+	return yPosition_;
+}
+
+bool Cell::isShot() {
+	bool isShot = false;
+	switch (getCellState()) {
+	case CLEAN:
+		setCellState(CellState::SHOT);
+		isShot = true;
+		break;
+	case EMPTY:
+		setCellState(CellState::MISSED);
+		isShot = false;
+		break;
+	default:
+		isShot = false;
+		break;
+	}
+	return isShot;
+}

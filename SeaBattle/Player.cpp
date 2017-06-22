@@ -37,7 +37,7 @@ void Player::setName(const string& name) {
 }
 
 bool Player::randomizeField() {
-	srand(time(0));
+	//srand(time(0));
 	Helper helper;
 	int deckCount = helper.getInitDeckCount();
 	int shipCount = helper.getInitShipCount();
@@ -120,22 +120,26 @@ bool Player::isUnavailable(int xPosition, int yPosition, bool isHorizontal, int 
 	}
 }
 
-bool Player::shut(int x, int y) {
-	bool isShot = false;
-	switch (field_.at(x + height_ * y).getCellState()) {
-	case CLEAN:
-		field_.at(x + height_ * y).setCellState(CellState::SHOT);
-		isShot = true;
-		break;
-	case EMPTY:
-		field_.at(x + height_ * y).setCellState(CellState::MISSED);
-		isShot = false;
-		break;
-	default:
-		isShot = false;
-		break;
+bool Player::isShot(int x, int y) {
+	for (int i = 0; i < shipCount_; i++) {
+		if (ships_.at(i).isShot(x, y)) {
+			field_.at(x + height_ * y).setCellState(CellState::SHOT);/*?*/
+			if (ships_.at(i).getHealth() == 0) {
+				/*auto decks = ships_.at(i).getDecks();
+				int topBorder, leftBorder, bottomBorder, rightBorder;
+				if (decks.at(0).getXPosition() == 0) {
+					leftBorder = 0;
+				}
+				else {
+					leftBorder = decks.at(0).getXPosition();
+				}*/
+				aliveShipCount_--;
+			}
+			return true;
+		}
 	}
-	return isShot;
+	field_.at(x + height_ * y).setCellState(CellState::MISSED);/*?*/
+	return false;
 }
 
 int Player::getAliveShipCount() const {

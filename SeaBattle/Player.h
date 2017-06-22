@@ -19,7 +19,7 @@ public:
 	void setName(const string& name);
 	bool randomizeField();
 	bool isUnavailable(int xPosition, int yPosition, bool isHorizontal, int deckCount);	
-	virtual void fire() = 0;
+	virtual bool isHit() = 0;
 	int getAliveShipCount() const;
 	const vector<Cell>& getField() const;
 protected:
@@ -30,7 +30,7 @@ protected:
 	vector<Cell> field_;
 	vector<Ship> ships_;
 	int aliveShipCount_;
-	bool shut(int x, int y);
+	bool isShot(int x, int y);
 };
 
 #endif // PLAYER_H

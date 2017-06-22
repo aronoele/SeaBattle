@@ -12,12 +12,9 @@ HumanPlayer::HumanPlayer() : Player("") {}
 
 HumanPlayer::~HumanPlayer() {}
 
-void HumanPlayer::fire() {
-	srand(time(0));
-	int xPosition;
-	int yPosition;
-	do {
-		xPosition = rand() % width_;
-		yPosition = rand() % height_;
-	} while (shut(xPosition, yPosition));
+bool HumanPlayer::isHit() {
+	//srand(time(0));
+	int xPosition = rand() % width_;
+	int yPosition = rand() % height_;
+	return isShot(xPosition, yPosition);
 }

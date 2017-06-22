@@ -11,21 +11,20 @@ RobotPlayer::RobotPlayer() : Player("") {}
 
 RobotPlayer::~RobotPlayer() {}
 
-void RobotPlayer::fire() {
+bool RobotPlayer::isHit() {
 	int xPosition;
 	int yPosition;
-	do {
-		cout << "Input x: ";
-		while (!(cin >> xPosition) || xPosition > 9) {
-			cin.clear();
-			cin.ignore(INT_MAX, '\n');
-			cout << "Wrong input. Try again: ";
-		}
-		cout << "Input y: ";
-		while (!(cin >> yPosition) || xPosition > 9) {
-			cin.clear();
-			cin.ignore(INT_MAX, '\n');
-			cout << "Wrong input. Try again: ";
-		}
-	} while (shut(xPosition, yPosition));
+	cout << "Input x: ";
+	while (!(cin >> xPosition) || xPosition > 9) {
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');
+		cout << "Wrong input. Try again: ";
+	}
+	cout << "Input y: ";
+	while (!(cin >> yPosition) || xPosition > 9) {
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');
+		cout << "Wrong input. Try again: ";
+	}
+	return isShot(xPosition, yPosition);
 }

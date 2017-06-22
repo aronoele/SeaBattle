@@ -8,7 +8,7 @@ public:
 	RobotPlayer(const string& name);
 	RobotPlayer();
 	~RobotPlayer();
-	void fire() override;
+	bool isHit() override;
 };
 
 #endif // ROBOTPLAYER_H

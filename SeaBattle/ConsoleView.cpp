@@ -16,6 +16,7 @@ void ConsoleView::show() {
 
 void ConsoleView::update() {
 	system("cls");
+	cout << "\n";
 	cout << "\t    " << game_->getHumanPlayer().getName().c_str()
 		<< "\t\t    " << game_->getRobotPlayer().getName().c_str() << ":\n";
 	cout << "\t  0123456789\t\t  0123456789\n";
@@ -45,7 +46,12 @@ void ConsoleView::update() {
 				cout << " ";
 				break;
 			case CLEAN:
-				cout << " ";
+				if (game_->isOver()) {
+					cout << char(219);
+				}
+				else {
+					cout << " ";
+				}
 				break;
 			case MISSED:
 				cout << char(249);
@@ -58,4 +64,6 @@ void ConsoleView::update() {
 		cout << "|\n";
 	}
 	cout << "\t #----------#\t\t #----------#\n";
+	cout << "     Remaining ships: " << game_->getHumanPlayer().getAliveShipCount()
+		<< "     Remaining ships: " << game_->getRobotPlayer().getAliveShipCount() << "\n\n";
 }

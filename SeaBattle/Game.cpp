@@ -9,7 +9,7 @@ Game::Game()
 Game::~Game() {}
 
 bool Game::isOver() {
-	return false;
+	return (humanPlayer_.getAliveShipCount() == 0 || robotPlayer_.getAliveShipCount() == 0);
 }
 
 void Game::changeState() {
@@ -25,13 +25,17 @@ const RobotPlayer& Game::getRobotPlayer() const {
 }
 
 void Game::humanFire() {
-	robotPlayer_.fire();
-	//changeState();
+	while (robotPlayer_.isHit()) {
+		//changeState();
+		notifyUpdate();
+	}
 	notifyUpdate();
 }
 
 void Game::robotFire() {
-	humanPlayer_.fire();
-	//changeState();
+	while (humanPlayer_.isHit()) {
+		//changeState();
+		notifyUpdate();
+	}
 	notifyUpdate();
 }

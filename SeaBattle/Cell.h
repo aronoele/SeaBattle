@@ -10,6 +10,9 @@ public:
 	~Cell();
 	CellState getCellState() const;
 	void setCellState(CellState state);
+	int getXPosition() const;
+	int getYPosition() const;
+	bool isShot();
 private:
 	int xPosition_;
 	int yPosition_;

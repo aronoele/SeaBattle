@@ -8,7 +8,7 @@ public:
 	HumanPlayer(const string& name);
 	HumanPlayer();
 	~HumanPlayer();
-	void fire() override;
+	bool isHit() override;
 };
 
 #endif // HUMANPLAYER_H
