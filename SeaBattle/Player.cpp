@@ -70,26 +70,22 @@ bool Player::randomizeField() {
 }
 
 bool Player::isUnavailable(int xPosition, int yPosition, bool isHorizontal, int deckCount) {
-	int topBorder, leftBorder, bottomBorder, rightBorder;
+	int topBorder = 0, leftBorder = 0, bottomBorder = height_ - 1, rightBorder = width_ - 1;
 	if (xPosition == 0) {
-		leftBorder = xPosition;
 		rightBorder = xPosition + 1;
 	}
 	else if (xPosition == width_ - 1) {
 		leftBorder = xPosition - 1;
-		rightBorder = xPosition;
 	}
 	else {
 		leftBorder = xPosition - 1;
 		rightBorder = xPosition + 1;
 	}
 	if (yPosition == 0) {
-		topBorder = yPosition;
 		bottomBorder = yPosition + 1;
 	}
 	else if (yPosition == height_ - 1) {
 		topBorder = yPosition - 1;
-		bottomBorder = yPosition;
 	}
 	else {
 		topBorder = yPosition - 1;
@@ -124,14 +120,37 @@ bool Player::isShot(int x, int y) {
 	for (int i = 0; i < shipCount_; i++) {
 		if (ships_.at(i).isShot(x, y)) {
 			field_.at(x + height_ * y).setCellState(CellState::SHOT);/*?*/
-			if (ships_.at(i).getHealth() == 0) {
+			if (ships_.at(i).getHealth() == 0) {//mark killed ship
 				/*auto decks = ships_.at(i).getDecks();
-				int topBorder, leftBorder, bottomBorder, rightBorder;
-				if (decks.at(0).getXPosition() == 0) {
-					leftBorder = 0;
+				int topBorder = 0, leftBorder = 0, bottomBorder = height_ - 1, rightBorder = width_ - 1;
+				if (decks.at(0).getXPosition() != 0) {
+					leftBorder = decks.at(0).getXPosition() - 1;
+				}
+				if (decks.at(0).getYPosition() != 0) {
+					topBorder = decks.at(0).getYPosition() - 1;
+				}
+				if (decks.at(1).getXPosition() == decks.at(0).getXPosition() + 1) {
+					if (decks.at(decks.size() - 1).getXPosition() != width_ - 1) {
+						rightBorder = decks.at(decks.size() - 1).getXPosition() + 1;
+					}
+					if (decks.at(0).getYPosition() != height_ - 1) {
+						topBorder = decks.at(0).getYPosition() + 1;
+					}
 				}
 				else {
-					leftBorder = decks.at(0).getXPosition();
+					if (decks.at(0).getXPosition() != width_ - 1) {
+						leftBorder = decks.at(0).getXPosition() + 1;
+					}
+					if (decks.at(decks.size() - 1).getYPosition() != height_ - 1) {
+						bottomBorder = decks.at(0).getYPosition() + 1;
+					}
+				}
+				for (int j = topBorder; j <= bottomBorder; j++) {
+					for (int i = leftBorder; i <= rightBorder; i++) {
+						if (i != 0 || i != width_ - 1 || j != 0 || j != height_ - 1) {
+							field_.at(i + height_ * j).setCellState(CellState::MISSED);
+						}
+					}
 				}*/
 				aliveShipCount_--;
 			}
