@@ -13,7 +13,14 @@ bool Game::isOver() {
 }
 
 void Game::changeState() {
-
+	while ((!isOver()) && robotPlayer_.isHit()) {
+		notifyUpdate();
+	}
+	notifyUpdate();
+	while ((!isOver()) && humanPlayer_.isHit()) {
+		notifyUpdate();
+	}
+	notifyUpdate();
 }
 
 const HumanPlayer& Game::getHumanPlayer() const {
@@ -24,18 +31,16 @@ const RobotPlayer& Game::getRobotPlayer() const {
 	return robotPlayer_;
 }
 
-void Game::humanFire() {
-	while (robotPlayer_.isHit()) {
-		//changeState();
-		notifyUpdate();
-	}
-	notifyUpdate();
-}
-
-void Game::robotFire() {
-	while (humanPlayer_.isHit()) {
-		//changeState();
-		notifyUpdate();
-	}
-	notifyUpdate();
-}
+//void Game::humanFire() {
+//	while (robotPlayer_.isHit()) {
+//		notifyUpdate();
+//	}
+//	notifyUpdate();
+//}
+//
+//void Game::robotFire() {
+//	while (humanPlayer_.isHit()) {
+//		notifyUpdate();
+//	}
+//	notifyUpdate();
+//}

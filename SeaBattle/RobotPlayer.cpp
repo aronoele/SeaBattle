@@ -21,7 +21,7 @@ bool RobotPlayer::isHit() {
 		cout << "Wrong input. Try again: ";
 	}
 	cout << "Input y: ";
-	while (!(cin >> yPosition) || xPosition > 9) {
+	while (!(cin >> yPosition) || yPosition > 9) {
 		cin.clear();
 		cin.ignore(INT_MAX, '\n');
 		cout << "Wrong input. Try again: ";

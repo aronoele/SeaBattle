@@ -14,8 +14,8 @@ public:
 	void changeState() override;
 	const HumanPlayer& getHumanPlayer() const;
 	const RobotPlayer& getRobotPlayer() const;
-	void humanFire();
-	void robotFire();
+	//void humanFire();
+	//void robotFire();
 private:
 	HumanPlayer humanPlayer_;
 	RobotPlayer robotPlayer_;

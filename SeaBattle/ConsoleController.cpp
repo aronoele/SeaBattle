@@ -7,7 +7,10 @@ ConsoleController::~ConsoleController() {}
 
 void ConsoleController::start() {
 	while (!game_->isOver()) {
-		game_->humanFire();
-		game_->robotFire();
+		/*game_->humanFire();
+		if (game_->isOver())
+			return;
+		game_->robotFire();*/
+		game_->changeState();
 	}
 }

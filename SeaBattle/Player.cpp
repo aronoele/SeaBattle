@@ -37,7 +37,7 @@ void Player::setName(const string& name) {
 }
 
 bool Player::randomizeField() {
-	srand(time(0));
+	//srand(time(0));
 	Helper helper;
 	int deckCount = helper.getInitDeckCount();
 	int shipCount = helper.getInitShipCount();
@@ -147,18 +147,18 @@ bool Player::isShot(int x, int y) {
 					}
 				}
 				for (int i = leftBorder; i <= rightBorder; i++) {
-					if (topBorder != 0) {
+					if (topBorder != decks.at(0).getYPosition()) {
 						field_.at(i + height_ * topBorder).setCellState(CellState::MISSED);
 					}
-					if (bottomBorder != height_ - 1) {
+					if (bottomBorder != decks.at(decks.size() - 1).getYPosition()) {
 						field_.at(i + height_ * bottomBorder).setCellState(CellState::MISSED);
 					}
 				}
 				for (int i = topBorder; i <= bottomBorder; i++) {
-					if (leftBorder != 0) {
+					if (leftBorder != decks.at(0).getXPosition()) {
 						field_.at(leftBorder + height_ * i).setCellState(CellState::MISSED);
 					}
-					if (rightBorder != 0) {
+					if (rightBorder != decks.at(decks.size() - 1).getXPosition()) {
 						field_.at(rightBorder + height_ * i).setCellState(CellState::MISSED);
 					}
 				}
